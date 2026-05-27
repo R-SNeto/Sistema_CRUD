@@ -1,8 +1,11 @@
+from crud import *
+from utils import *
+
 def main_menu ():
     estado_sisema = True
     
     while estado_sisema:
-        print("  ARRAIAL MODAS TERESINA   ")
+        print("\n  ARRAIAL MODAS TERESINA ")
         print("---------------------------")
         print("[1] Adicionar produtos ao estoque")
         print("[2] Listar produtos do estoque")
@@ -27,17 +30,29 @@ def main_menu ():
             print("Opção inválida, tente novamente\n")
             
 def adicionar_produto ():
-    print("     ADICIONAR PRODUTOS    ")
+    print("\n     ADICIONAR PRODUTOS  ")
     print("---------------------------")
+    nome = input("1) Nome do produto: ")
+    quantidade_inicial = int(input("2) Quantidade inicial no estoque: "))
+    
+    if processar_nome (nome): 
+        criar(nome, quantidade_inicial)
+        print("\nPRODUTO ADICIONADO COM SUCESSO")
+    else:
+        print("\nPRODUTO NÃO FOI CADASTRADO DEVIDO À INCOERÊNCIAS NO NOME")
+        
     
 def listar_produtos ():
-    print("       LISTAR PRODUTOS     ")
+    print("\n       LISTAR PRODUTOS   ")
     print("---------------------------")
+    
+    print(ler())
+
 def modificar_produtos ():
-    print("     MODIFICAR PRODUTOS    ")
+    print("\n     MODIFICAR PRODUTOS  ")
     print("---------------------------")
 def remover_produtos ():
-    print("      REMOVER PRODUTOS     ")
+    print("\n      REMOVER PRODUTOS   ")
     print("---------------------------")
     
 main_menu ()
