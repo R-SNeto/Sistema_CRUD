@@ -29,6 +29,7 @@ def main_menu ():
 def adicionar_produto ():
     print("     ADICIONAR PRODUTOS    ")
     print("---------------------------")
+    
 def listar_produtos ():
     print("       LISTAR PRODUTOS     ")
     print("---------------------------")
