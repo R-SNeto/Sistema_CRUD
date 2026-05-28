@@ -1,8 +1,8 @@
 from dados import dados_estoque
 
 #Validações
-def esta_cadastrado (item):
-    if item in dados_estoque.keys:
+def esta_cadastrado (nome):
+    if nome in dados_estoque:
         return True
     else:
         return False
@@ -20,7 +20,7 @@ def tamanho_minimo (nome):
     
 #Processamento de dados
 def processar_nome (nome):
-    if (caractere_especial (nome) and tamanho_minimo (nome)):
-        return True
-    else:
+    if (caractere_especial (nome) and tamanho_minimo (nome) and esta_cadastrado (nome)):
         return False
+    else:
+        return True
