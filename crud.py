@@ -1,13 +1,14 @@
 from dados import dados_estoque
 
-def criar (nome_produto, quantidade_produto):
-    dados_estoque[nome_produto] = quantidade_produto
+def criar (nome_produto, quantidade_produto, valor_venda):
+    dados_estoque[nome_produto] = {'estoque' : quantidade_produto, 
+                                   'valor' : valor_venda}
 
 def ler ():
     texto = ""
     
-    for nome_produto, quantidade_produto in dados_estoque.items():
-        texto += f"Produto: {nome_produto} | Estoque: {quantidade_produto}\n"
+    for nome_produto, dados in dados_estoque.items():
+        texto += f"Produto: {nome_produto} | Estoque: {dados['estoque']} | Preço: {dados['valor']}\n"
         
     return texto
 

@@ -30,29 +30,38 @@ def main_menu ():
             print("Opção inválida, tente novamente\n")
             
 def adicionar_produto ():
-    estado_funcao = True
-    
-    while estado_funcao:
-        print("\n     ADICIONAR PRODUTOS  ")
-        print("---------------------------")
-        nome = input("1) Nome do produto (sem caracteres especiais): ")
-        quantidade_inicial = int(input("2) Quantidade inicial no estoque: "))
-    
-        if processar_nome (nome): 
-            criar(nome, quantidade_inicial)
+    while True:
+        try:
+            print("\n     ADICIONAR PRODUTOS  ")
+            print("---------------------------")
+            nome = input("1) Nome do produto (0 para sair): ")
+            
+            if sair_funcao (nome):
+                break
+            
+            processar_nome (nome)
+            
+            quantidade_inicial = int(input("2) Quantidade inicial no estoque: "))
+            valor_venda = float(input("3) Insira o valor de venda R$: "))
+            
+            criar(nome, quantidade_inicial, valor_venda)
+            
             print("\nPRODUTO ADICIONADO COM SUCESSO\n")
-            
+                
             yn = input("Deseja adicionar outro produto (y/n)? ")
-            
+                
             if yn.lower() == "y":
-                adicionar_produto ()
+                continue
             elif yn.lower() == "n":
                 print("\nRETORNANDO AO MENU")
-                main_menu()
+                break
+            else:
+                print("\nInsira um valor correto")
+                
+        except ValueError as e:
+            print(f"\nErro: {e}")
             
-        else:
-            print("\nPRODUTO NÃO FOI CADASTRADO DEVIDO À INCOERÊNCIAS")
-        
+            
     
 def listar_produtos ():
     print("\n       LISTAR PRODUTOS   ")
