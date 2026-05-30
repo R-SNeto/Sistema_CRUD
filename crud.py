@@ -7,14 +7,16 @@ def criar (nome_produto, quantidade_produto, valor_venda):
 def ler ():
     texto = ""
     
-    for nome_produto, dados in dados_estoque.items():
+    for nome_produto, dados in sorted(dados_estoque.items()):
         texto += f"Produto: {nome_produto} | Estoque: {dados['estoque']} | Preço: {dados['valor']}\n"
         
     return texto
 
-def atualizar (nome_produto, nova_quantidade):
-    if nome_produto in dados_estoque:
-        dados_estoque[nome_produto] = nova_quantidade
+def atualizar_nome (nome_antigo, novo_nome):
+    dados_estoque[novo_nome] = dados_estoque.pop(nome_antigo)
+    
+def atualizar_valor (nome_produto, novo_valor):
+    dados_estoque[nome_produto]['valor'] = novo_valor
         
 def deletar (nome_produto):
     if nome_produto in dados_estoque:

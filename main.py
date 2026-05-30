@@ -43,7 +43,9 @@ def adicionar_produto ():
             processar_nome (nome)
             
             quantidade_inicial = int(input("2) Quantidade inicial no estoque: "))
+            processar_valor(quantidade_inicial)
             valor_venda = float(input("3) Insira o valor de venda R$: "))
+            processar_valor(valor_venda)
             
             criar(nome, quantidade_inicial, valor_venda)
             
@@ -88,19 +90,36 @@ def modificar_produtos ():
 
 def menu_modificar_produtos (nome):
     while True:
-        print("\nSeleciona o que será modificado: ")
-        print("---------------------------")
-        print("[1] Modificar nome")
-        print("[2] Alterar quantidade de produtos no estoque")
-        print("[3] Alterar valor de venda")
-        print("[4] Sair")
-        print("---------------------------")
-        opcao = int(input("Escolha uma opção: "))
+        try:
+            print("\nSeleciona o que será modificado: ")
+            print("---------------------------")
+            print("[1] Modificar nome")
+            print("[2] Alterar valor de venda")
+            print("[3] Sair")
+            print("---------------------------")
+            opcao = int(input("\nEscolha uma opção: "))
             
-        if opcao == 1:
-            novo_nome = input("Escolha o novo nome: ")
-            
-            if processar_nome(novo_nome):
+            if opcao == 3:
+                break
+                
+            if opcao == 1:
+                novo_nome = input("\Digite o novo nome: ")
+                
+                processar_nome(novo_nome)
+                atualizar_nome(nome, novo_nome)
+                
+                print("\nNome atribuído com SUCESSO!")
+                break
+            elif opcao == 2:
+                novo_valor = float(input("\nDigite o novo valor de venda: "))
+                
+                processar_valor(novo_valor)
+                atualizar_valor(nome, novo_valor)
+
+                print("\nValor atualizado com sucesso!")
+                break
+        except ValueError as e:
+            print(f"Erro: {e}")
     
 def remover_produtos ():
     print("\n      REMOVER PRODUTOS   ")
