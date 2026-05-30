@@ -42,3 +42,14 @@ def processar_nome (nome):
 def processar_valor (valor):
     if not numero_positivo:
         raise ValueError("Números negativos não são aceitos")
+    
+#Utilitários
+
+#Confirma uma ação do usuário
+def sim_nao(resposta):
+    if resposta.lower() == "y":
+        return True
+    elif resposta.lower() == "n":
+        return False
+    else:
+        raise ValueError("Por favor, seleciona 'y' ou 'n'!")

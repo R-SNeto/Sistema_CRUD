@@ -47,19 +47,17 @@ def adicionar_produto ():
             valor_venda = float(input("3) Insira o valor de venda R$: "))
             processar_valor(valor_venda)
             
-            criar(nome, quantidade_inicial, valor_venda)
+            criar_produto(nome, quantidade_inicial, valor_venda)
             
             print("\nPRODUTO ADICIONADO COM SUCESSO\n")
                 
             yn = input("Deseja adicionar outro produto (y/n)? ")
                 
-            if yn.lower() == "y":
+            if sim_nao(yn):
                 continue
-            elif yn.lower() == "n":
-                print("\nRETORNANDO AO MENU")
+            elif not sim_nao(yn):
+                print("\nRetornando ao menu...")
                 break
-            else:
-                print("\nInsira um valor correto")
                 
         except ValueError as e:
             print(f"\nErro: {e}")
@@ -70,7 +68,7 @@ def listar_produtos ():
     print("\n       LISTAR PRODUTOS   ")
     print("---------------------------")
     
-    print(ler())
+    print(ler_produto())
 
 def modificar_produtos ():
     while True:
@@ -118,11 +116,31 @@ def menu_modificar_produtos (nome):
 
                 print("\nValor atualizado com sucesso!")
                 break
+            
         except ValueError as e:
             print(f"Erro: {e}")
     
 def remover_produtos ():
-    print("\n      REMOVER PRODUTOS   ")
-    print("---------------------------")
+    while True:
+        try:
+            print("\n      REMOVER PRODUTOS   ")
+            print("---------------------------")
+            nome = input("1) Nome do produto que será deletado (0 para sair): ")
+            
+            if sair_funcao(nome):
+                break
+            
+            yn = input("2) Você tem CERTEZA disso (y/n)? ")
+            
+            if sim_nao(yn):
+                deletar_produto(nome)
+                print("\nProduto deletado com sucesso!")
+                break
+            elif not sim_nao(yn):
+                print("\nRetornando ao menu...")
+                break
+            
+        except ValueError as e:
+            print(f"Erro: {e}")
     
 main_menu ()

@@ -1,10 +1,10 @@
 from dados import dados_estoque
 
-def criar (nome_produto, quantidade_produto, valor_venda):
+def criar_produto (nome_produto, quantidade_produto, valor_venda):
     dados_estoque[nome_produto] = {'estoque' : quantidade_produto, 
                                    'valor' : valor_venda}
 
-def ler ():
+def ler_produto ():
     texto = ""
     
     for nome_produto, dados in sorted(dados_estoque.items()):
@@ -18,6 +18,5 @@ def atualizar_nome (nome_antigo, novo_nome):
 def atualizar_valor (nome_produto, novo_valor):
     dados_estoque[nome_produto]['valor'] = novo_valor
         
-def deletar (nome_produto):
-    if nome_produto in dados_estoque:
-        dados_estoque.pop(dados_estoque[nome_produto], -1)
+def deletar_produto (nome_produto):
+    dados_estoque.pop(nome_produto)
