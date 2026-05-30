@@ -14,6 +14,10 @@ def main_menu ():
         print("[5] Sair")
         print("---------------------------")
         opcao = int(input("Escolha uma opção: "))
+        
+        if opcao == 5:
+            print("Saindo do sistema...")
+            estado_sisema = False
     
         if opcao == 1:
             adicionar_produto ()
@@ -23,9 +27,6 @@ def main_menu ():
             modificar_produtos ()
         elif opcao == 4:
             remover_produtos ()
-        elif opcao == 5:
-            print("Saindo do sistema...")
-            estado_sisema = False
         else:
             print("Opção inválida, tente novamente\n")
             
@@ -70,8 +71,37 @@ def listar_produtos ():
     print(ler())
 
 def modificar_produtos ():
-    print("\n     MODIFICAR PRODUTOS  ")
-    print("---------------------------")
+    while True:
+        print("\n     MODIFICAR PRODUTOS  ")
+        print("---------------------------")
+        nome = input("1) Nome do produto que será modificado (0 para sair): ")
+        
+        sair_funcao(nome)
+        
+        if not esta_cadastrado(nome):
+            print("Produto não existente")
+            continue
+        else:
+            menu_modificar_produtos (nome)
+            break
+        
+
+def menu_modificar_produtos (nome):
+    while True:
+        print("\nSeleciona o que será modificado: ")
+        print("---------------------------")
+        print("[1] Modificar nome")
+        print("[2] Alterar quantidade de produtos no estoque")
+        print("[3] Alterar valor de venda")
+        print("[4] Sair")
+        print("---------------------------")
+        opcao = int(input("Escolha uma opção: "))
+            
+        if opcao == 1:
+            novo_nome = input("Escolha o novo nome: ")
+            
+            if processar_nome(novo_nome):
+    
 def remover_produtos ():
     print("\n      REMOVER PRODUTOS   ")
     print("---------------------------")
