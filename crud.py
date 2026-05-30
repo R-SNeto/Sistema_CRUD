@@ -17,6 +17,12 @@ def atualizar_nome (nome_antigo, novo_nome):
     
 def atualizar_valor (nome_produto, novo_valor):
     dados_estoque[nome_produto]['valor'] = novo_valor
+    
+def adicionar_qtd_estoque (nome_produto, qtd_produto):
+    dados_estoque[nome_produto]['estoque'] += qtd_produto
+    
+def remover_qtd_estoque (nome_produto, qtd_produto):
+    dados_estoque[nome_produto]['estoque'] -= qtd_produto
         
 def deletar_produto (nome_produto):
     dados_estoque.pop(nome_produto)
