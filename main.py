@@ -23,6 +23,8 @@ def main_menu():
             elif opcao == 3:
                 print("Saindo...")
                 break
+            else:
+                raise ValueError()
         except ValueError:
             print("\nSeleciona uma opção válida")
                         

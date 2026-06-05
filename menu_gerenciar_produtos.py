@@ -17,10 +17,7 @@ def menu_gerenciar_produtos():
             print("---------------------------")
             opcao = int(input("Escolha uma opção: "))
             
-            if opcao == 5:
-                print("Retornando ao menu princiapl...")
-                estado_sisema = False
-            elif opcao == 1:
+            if opcao == 1:
                 adicionar_produto()
             elif opcao == 2:
                 listar_produtos()
@@ -28,6 +25,9 @@ def menu_gerenciar_produtos():
                 modificar_produtos()
             elif opcao == 4:
                 remover_produtos()
+            elif opcao == 5:
+                print("Retornando ao menu princiapl...")
+                estado_sisema = False
             else:
                 raise ValueError("Insira uma opção válida")
         except ValueError as e:
@@ -40,6 +40,7 @@ def adicionar_produto():
             print("\n     ADICIONAR PRODUTOS  ")
             print("---------------------------")
             nome = input("1) Nome do produto (0 para sair): ")
+            nome = nome.strip().title()
             
             if utils.sair_funcao (nome):
                 break
@@ -87,7 +88,8 @@ def modificar_produtos():
         print("---------------------------")
         nome = input("1) Nome do produto que será modificado (0 para sair): ")
         
-        utils.sair_funcao(nome)
+        if utils.sair_funcao(nome):
+            break
         
         if not utils.esta_cadastrado(nome):
             print("Produto não existente")
@@ -107,12 +109,10 @@ def extensao_modificar_produtos(nome):
             print("[3] Sair")
             print("---------------------------")
             opcao = int(input("\nEscolha uma opção: "))
-            
-            if opcao == 3:
-                break
                 
             if opcao == 1:
-                novo_nome = input("\Digite o novo nome: ")
+                novo_nome = input("\nDigite o novo nome: ")
+                novo_nome = novo_nome.strip().title()
                 
                 utils.processar_nome(novo_nome)
                 crud.atualizar_nome(nome, novo_nome)
@@ -126,6 +126,8 @@ def extensao_modificar_produtos(nome):
                 crud.atualizar_valor(nome, novo_valor)
 
                 print("\nValor atualizado com sucesso!")
+                break
+            elif opcao == 3:
                 break
             
         except ValueError as e:

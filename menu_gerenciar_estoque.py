@@ -29,10 +29,7 @@ def menu_adicionar_remover(nome):
             print("---------------------------")
             opcao = int(input("Escolha uma opção: "))
             
-            if opcao == 3:
-                print("\nRetornando ao menu...")
-                break
-            elif opcao == 1:
+            if opcao == 1:
                 qtd_produtos = int(input("2) Quantidade de produtos que será adicionado: "))
                 
                 utils.processar_valor(qtd_produtos)
@@ -45,7 +42,10 @@ def menu_adicionar_remover(nome):
                 utils.processar_valor(qtd_produtos)
                 crud.remover_qtd_estoque(nome, qtd_produtos)
                 
-                print("\nEstoque atualizado com sucesso!")
+                print("\nEstoque atualizado com sucesso!") 
+            elif opcao == 3:
+                print("\nRetornando ao menu...")
+                break
             else:
                 raise ValueError("Insira uma opção válida")
         
