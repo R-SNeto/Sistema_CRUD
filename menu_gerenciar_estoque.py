@@ -10,8 +10,9 @@ def menu_gerenciar_estoque():
         prod.listar_produtos()
         
         nome = input("1) Digite o nome do produto que terá seu estoque alterado (0 para sair): ")
+        nome = utils.padronizar_nome(nome)
          
-        if utils.sair_funcao (nome):
+        if utils.sair_funcao(nome):
             break
         elif not utils.esta_cadastrado(nome):
             print("\nProduto não cadastrado")

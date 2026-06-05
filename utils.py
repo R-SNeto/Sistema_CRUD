@@ -34,10 +34,15 @@ def numero_positivo(valor):
         return True
     else:
         return False
-    
+
+#Envia uma exceção caso o valor digitado seja maior que o valor de estoque
 def valor_maior_que_estoque(nome_produto, qtd_produto):
     if qtd_produto > dados_estoque[nome_produto]['estoque']:
         raise ValueError("Valor digitado maior que o estoque atual")
+
+#Padroniza nomes para o modelo "Aaa"
+def padronizar_nome(nome):
+    return nome.strip().title()
     
 #Processamento de dados
 

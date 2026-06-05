@@ -40,7 +40,7 @@ def adicionar_produto():
             print("\n     ADICIONAR PRODUTOS  ")
             print("---------------------------")
             nome = input("1) Nome do produto (0 para sair): ")
-            nome = nome.strip().title()
+            nome = utils.padronizar_nome(nome)
             
             if utils.sair_funcao (nome):
                 break
@@ -87,6 +87,7 @@ def modificar_produtos():
         print("\n     MODIFICAR PRODUTOS  ")
         print("---------------------------")
         nome = input("1) Nome do produto que será modificado (0 para sair): ")
+        nome = utils.padronizar_nome(nome)
         
         if utils.sair_funcao(nome):
             break
@@ -95,7 +96,7 @@ def modificar_produtos():
             print("Produto não existente")
             continue
         else:
-            extensao_modificar_produtos (nome)
+            extensao_modificar_produtos(nome)
             break
 
 
@@ -112,7 +113,7 @@ def extensao_modificar_produtos(nome):
                 
             if opcao == 1:
                 novo_nome = input("\nDigite o novo nome: ")
-                novo_nome = novo_nome.strip().title()
+                novo_nome = utils.padronizar_nome(novo_nome)
                 
                 utils.processar_nome(novo_nome)
                 crud.atualizar_nome_produto(nome, novo_nome)
@@ -144,6 +145,7 @@ def remover_produtos():
             print("\n      REMOVER PRODUTOS   ")
             print("---------------------------")
             nome = input("1) Nome do produto que será deletado (0 para sair): ")
+            nome = utils.padronizar_nome(nome)
             
             if utils.sair_funcao(nome):
                 break
