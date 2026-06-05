@@ -16,7 +16,7 @@ def esta_cadastrado (nome):
     else:
         return False
 
-#Verifica se o nome é vazio. Retorna False caso esteja vazio
+#Verifica se o nome é vazio. Retorna True caso esteja vazio
 def nome_vazio(nome):
     if nome.strip():
         return False

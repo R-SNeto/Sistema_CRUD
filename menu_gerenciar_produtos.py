@@ -75,7 +75,7 @@ def listar_produtos():
     if not dados_estoque:
         print("\nLISTA VAZIA")
     else:
-        print(crud.ler_produto())
+        print(crud.ler_dados_produto())
 
    
 def modificar_produtos():
@@ -115,7 +115,7 @@ def extensao_modificar_produtos(nome):
                 novo_nome = novo_nome.strip().title()
                 
                 utils.processar_nome(novo_nome)
-                crud.atualizar_nome(nome, novo_nome)
+                crud.atualizar_nome_produto(nome, novo_nome)
                 
                 print("\nNome atribuído com SUCESSO!")
                 break
@@ -123,7 +123,7 @@ def extensao_modificar_produtos(nome):
                 novo_valor = float(input("\nDigite o novo valor de venda: "))
                 
                 utils.processar_valor(novo_valor)
-                crud.atualizar_valor(nome, novo_valor)
+                crud.atualizar_valor_produto(nome, novo_valor)
 
                 print("\nValor atualizado com sucesso!")
                 break
@@ -151,9 +151,13 @@ def remover_produtos():
             yn = input("2) Você tem CERTEZA disso (y/n)? ")
             
             if utils.sim_nao(yn):
-                crud.deletar_produto(nome)
-                print("\nProduto deletado com sucesso!")
-                break
+                if not utils.esta_cadastrado(nome):
+                    print("\nPRODUTO NÃO ENCONTRADO")
+                    continue
+                else:
+                    crud.deletar_produto(nome)
+                    print("\nProduto deletado com sucesso!")
+                    break
             elif not utils.sim_nao(yn):
                 print("\nRetornando ao menu...")
                 break
