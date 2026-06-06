@@ -28,5 +28,5 @@ def main_menu():
         except ValueError:
             print("\nSeleciona uma opção válida")
                         
-                  
+# Inicializa o menu principal               
 main_menu()

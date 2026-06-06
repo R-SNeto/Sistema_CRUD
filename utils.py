@@ -25,6 +25,7 @@ def nome_vazio(nome):
 
 #Verifica se existe caracteres especiais (#, @, %...) no nome. Retorna true caso não tenha e false caso tenha
 def caractere_especial(nome):
+    # Remove espaços antes de verificar para permitir nomes compostos (ex: "Camiseta Azul")
     auxnome = nome.replace(" ", "")
     return auxnome.isalnum()
 

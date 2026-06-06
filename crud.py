@@ -5,6 +5,7 @@ def criar_produto (nome_produto, quantidade_produto, valor_venda):
     dados_estoque[nome_produto] = {'estoque' : quantidade_produto, 
                                    'valor' : valor_venda}
 
+# Lê os dados armazenados em "dados_estoque" e retorna uma string formatada com todos os produtos, ordenados alfabeticamente
 def ler_dados_produto ():
     texto = ""
     
@@ -23,6 +24,7 @@ def adicionar_qtd_estoque (nome_produto, qtd_produto):
     dados_estoque[nome_produto]['estoque'] += qtd_produto
     
 def remover_qtd_estoque (nome_produto, qtd_produto):
+    # Valida antes de remover para evitar estoque negativo
     utils.valor_maior_que_estoque(nome_produto, qtd_produto)
     dados_estoque[nome_produto]['estoque'] -= qtd_produto
         
